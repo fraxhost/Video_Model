@@ -1,0 +1,54 @@
+/home/students/Desktop/projects/Video_Model/Refined4/.venv/lib/python3.12/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/home/students/Desktop/projects/Video_Model/Refined4/.venv/lib/python3.12/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=MViT_V1_B_Weights.KINETICS400_V1`. You can also use `weights=MViT_V1_B_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+
+=== Dataset Statistics ===
+Total samples: 441
+Train samples: 248
+Test samples: 193
+
+Action classes: 23
+App classes: 14
+
+Train action distribution:
+action
+browser:explore_url         87
+file:navigate_folder        33
+user:typing                 28
+app:switch                  23
+system:notification_show    17
+app:explore                 15
+user:reading                14
+app:close                    6
+file:open                    5
+app:open                     4
+Name: count, dtype: int64
+
+Train app distribution:
+target_app
+none               74
+video_streaming    61
+dev_resource       31
+chat_client        17
+editor             15
+other              14
+browser            13
+cmd                 9
+explorer            7
+document            3
+image               2
+notepad             1
+executable          1
+Name: count, dtype: int64
+
+=== Class Weights ===
+Action weights (top 5): torch.return_types.topk(
+values=tensor([2.5306, 2.5306, 1.4611, 1.4611, 1.2653]),
+indices=tensor([ 5, 13, 20,  4, 12]))
+App weights: tensor([0.6809, 0.5954, 0.8183, 0.4409, 1.4174, 0.6339, 2.4550, 0.9279, 1.7360,
+        0.2854, 2.4550, 0.6561, 0.5833, 0.3143])
+
+=== Final Evaluation on Test Set ===
+Evaluation Metrics:
+{'action': {'accuracy': 0.5077720207253886, 'precision': 0.16721175649747078, 'recall': 0.2053261390026096, 'f1': 0.16085220521008714, 'per_class_recall': {'app:close': np.float64(0.0), 'app:explore': np.float64(0.0), 'app:open': np.float64(0.0), 'app:switch': np.float64(1.0), 'background:idle': np.float64(0.9375), 'browser:click_link': np.float64(0.0), 'browser:close_tab': np.float64(0.0), 'browser:explore_url': np.float64(0.72), 'browser:login': np.float64(0.0), 'browser:navigate_url': np.float64(0.0), 'browser:new_tab': np.float64(0.0), 'browser:search': np.float64(0.0), 'browser:switch_tab': np.float64(0.0), 'file:close': np.float64(0.9615384615384616), 'file:create': np.float64(0.0), 'file:navigate_folder': np.float64(0.0), 'file:open': np.float64(0.2222222222222222), 'file:select': np.float64(0.0), 'system:notification_show': np.float64(0.0), 'user:reading': np.float64(0.47058823529411764), 'user:right_click': np.float64(0.0)}, 'mean_conf': np.float32(0.28488383)}, 'app': {'accuracy': 0.5595854922279793, 'precision': 0.2055156382079459, 'recall': 0.23127530364372467, 'f1': 0.20407129102781274, 'per_class_recall': {'browser': np.float64(0.0), 'chat_client': np.float64(0.0), 'cmd': np.float64(0.0), 'dev_resource': np.float64(0.5416666666666666), 'document': np.float64(0.0), 'editor': np.float64(0.5), 'executable': np.float64(0.0), 'explorer': np.float64(0.0), 'image': np.float64(0.9649122807017544), 'none': np.float64(0.0), 'notepad': np.float64(0.0), 'other': np.float64(0.0), 'search_engine': np.float64(1.0)}, 'mean_conf': np.float32(0.28456235)}}

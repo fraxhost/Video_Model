@@ -1,0 +1,195 @@
+/home/students/Desktop/projects/Video_Model/Refined4/.venv/lib/python3.12/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/home/students/Desktop/projects/Video_Model/Refined4/.venv/lib/python3.12/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=MViT_V1_B_Weights.KINETICS400_V1`. You can also use `weights=MViT_V1_B_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+/home/students/Desktop/projects/Video_Model/Refined4/trainer.py:83: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  scaler = GradScaler() if MIXED_PRECISION else None
+
+=== Dataset Statistics ===
+Total samples: 441
+Train samples: 248
+Test samples: 193
+
+Action classes: 23
+App classes: 14
+
+Train action distribution:
+action
+browser:explore_url         87
+file:navigate_folder        33
+user:typing                 28
+app:switch                  23
+system:notification_show    17
+app:explore                 15
+user:reading                14
+app:close                    6
+file:open                    5
+app:open                     4
+Name: count, dtype: int64
+
+Train app distribution:
+target_app
+none               74
+video_streaming    61
+dev_resource       31
+chat_client        17
+editor             15
+other              14
+browser            13
+cmd                 9
+explorer            7
+document            3
+image               2
+notepad             1
+executable          1
+Name: count, dtype: int64
+
+=== Class Weights ===
+Action weights (top 5): torch.return_types.topk(
+values=tensor([2.5306, 2.5306, 1.4611, 1.4611, 1.2653]),
+indices=tensor([ 5, 13, 20,  4, 12]))
+App weights: tensor([0.6809, 0.5954, 0.8183, 0.4409, 1.4174, 0.6339, 2.4550, 0.9279, 1.7360,
+        0.2854, 2.4550, 0.6561, 0.5833, 0.3143])
+
+=== Starting Training ===
+Epochs: 20, Batch Size: 4
+Learning Rate: 5e-05, Weight Decay: 0.001
+Action Loss Weight: 2.0, App Loss Weight: 1.0
+Label Smoothing: 0.1
+
+Epoch 1/20 (LR: 0.000025)
+/home/students/Desktop/projects/Video_Model/Refined4/trainer.py:30: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+  Batch [20/62] - Loss: 10.2923, Action: 3.5859, App: 3.1205
+  Batch [40/62] - Loss: 9.9259, Action: 3.4872, App: 2.9516
+  Batch [60/62] - Loss: 9.7788, Action: 3.4239, App: 2.9310
+Train Loss: 9.6763 (Action: 3.3657, App: 2.9449)
+Running validation...
+Validation - Action: Acc=0.3005, F1=0.0553 | App: Acc=0.3368, F1=0.0775
+✓ Saved best model (Combined F1: 0.0664)
+
+Epoch 2/20 (LR: 0.000050)
+/home/students/Desktop/projects/Video_Model/Refined4/trainer.py:30: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+  Batch [20/62] - Loss: 9.0917, Action: 3.1990, App: 2.6936
+  Batch [40/62] - Loss: 8.8843, Action: 3.0442, App: 2.7958
+  Batch [60/62] - Loss: 8.9262, Action: 3.0595, App: 2.8071
+Train Loss: 9.0999 (Action: 3.1223, App: 2.8553)
+Running validation...
+Validation - Action: Acc=0.3938, F1=0.0582 | App: Acc=0.3834, F1=0.1002
+✓ Saved best model (Combined F1: 0.0792)
+
+Epoch 3/20 (LR: 0.000050)
+/home/students/Desktop/projects/Video_Model/Refined4/trainer.py:30: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+  Batch [20/62] - Loss: 7.8494, Action: 2.5248, App: 2.7998
+  Batch [40/62] - Loss: 8.8491, Action: 3.0363, App: 2.7766
+  Batch [60/62] - Loss: 8.2890, Action: 2.8450, App: 2.5990
+Train Loss: 8.4438 (Action: 2.8728, App: 2.6982)
+Running validation...
+Validation - Action: Acc=0.3575, F1=0.0643 | App: Acc=0.3886, F1=0.0989
+✓ Saved best model (Combined F1: 0.0816)
+
+Epoch 4/20 (LR: 0.000050)
+/home/students/Desktop/projects/Video_Model/Refined4/trainer.py:30: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+  Batch [20/62] - Loss: 8.2621, Action: 2.7880, App: 2.6860
+  Batch [40/62] - Loss: 7.7930, Action: 2.6007, App: 2.5915
+  Batch [60/62] - Loss: 7.5200, Action: 2.5193, App: 2.4815
+Train Loss: 7.8123 (Action: 2.6412, App: 2.5300)
+Running validation...
+Validation - Action: Acc=0.3420, F1=0.0701 | App: Acc=0.3886, F1=0.0967
+✓ Saved best model (Combined F1: 0.0834)
+
+Epoch 5/20 (LR: 0.000048)
+/home/students/Desktop/projects/Video_Model/Refined4/trainer.py:30: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+  Batch [20/62] - Loss: 7.0840, Action: 2.2866, App: 2.5109
+  Batch [40/62] - Loss: 5.7316, Action: 1.8426, App: 2.0464
+  Batch [60/62] - Loss: 6.0362, Action: 2.0062, App: 2.0237
+Train Loss: 7.3289 (Action: 2.4760, App: 2.3769)
+Running validation...
+Validation - Action: Acc=0.3782, F1=0.1081 | App: Acc=0.3886, F1=0.0961
+✓ Saved best model (Combined F1: 0.1021)
+
+Epoch 6/20 (LR: 0.000047)
+/home/students/Desktop/projects/Video_Model/Refined4/trainer.py:30: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+  Batch [20/62] - Loss: 5.8774, Action: 1.8865, App: 2.1043
+  Batch [40/62] - Loss: 6.9962, Action: 2.2835, App: 2.4291
+  Batch [60/62] - Loss: 7.4604, Action: 2.5522, App: 2.3560
+Train Loss: 6.8680 (Action: 2.3107, App: 2.2465)
+Running validation...
+Validation - Action: Acc=0.4715, F1=0.1494 | App: Acc=0.5337, F1=0.1946
+✓ Saved best model (Combined F1: 0.1720)
+
+Epoch 7/20 (LR: 0.000044)
+/home/students/Desktop/projects/Video_Model/Refined4/trainer.py:30: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+  Batch [20/62] - Loss: 5.2982, Action: 1.7468, App: 1.8046
+  Batch [40/62] - Loss: 6.5149, Action: 2.1279, App: 2.2591
+  Batch [60/62] - Loss: 4.9364, Action: 1.6869, App: 1.5626
+Train Loss: 6.4375 (Action: 2.1573, App: 2.1229)
+Running validation...
+Validation - Action: Acc=0.5078, F1=0.1609 | App: Acc=0.5596, F1=0.2041
+✓ Saved best model (Combined F1: 0.1825)
+
+Epoch 8/20 (LR: 0.000041)
+/home/students/Desktop/projects/Video_Model/Refined4/trainer.py:30: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+  Batch [20/62] - Loss: 5.2445, Action: 1.7113, App: 1.8219
+  Batch [40/62] - Loss: 6.7439, Action: 2.2455, App: 2.2528
+  Batch [60/62] - Loss: 6.9445, Action: 2.3685, App: 2.2075
+Train Loss: 6.1825 (Action: 2.0726, App: 2.0372)
+Running validation...
+Validation - Action: Acc=0.4404, F1=0.1474 | App: Acc=0.4767, F1=0.1497
+No improvement (1/5)
+
+Epoch 9/20 (LR: 0.000038)
+/home/students/Desktop/projects/Video_Model/Refined4/trainer.py:30: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+  Batch [20/62] - Loss: 5.3548, Action: 1.7425, App: 1.8699
+  Batch [40/62] - Loss: 5.1184, Action: 1.5779, App: 1.9626
+  Batch [60/62] - Loss: 5.5077, Action: 1.8083, App: 1.8911
+Train Loss: 5.7881 (Action: 1.9331, App: 1.9220)
+Running validation...
+Validation - Action: Acc=0.4197, F1=0.1496 | App: Acc=0.5130, F1=0.2067
+No improvement (2/5)
+
+Epoch 10/20 (LR: 0.000034)
+/home/students/Desktop/projects/Video_Model/Refined4/trainer.py:30: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+  Batch [20/62] - Loss: 5.1214, Action: 1.6126, App: 1.8963
+  Batch [40/62] - Loss: 5.8174, Action: 1.9350, App: 1.9474
+  Batch [60/62] - Loss: 5.2483, Action: 1.7969, App: 1.6544
+Train Loss: 5.5470 (Action: 1.8602, App: 1.8267)
+Running validation...
+Validation - Action: Acc=0.3886, F1=0.1444 | App: Acc=0.4456, F1=0.1617
+No improvement (3/5)
+
+Epoch 11/20 (LR: 0.000029)
+/home/students/Desktop/projects/Video_Model/Refined4/trainer.py:30: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+  Batch [20/62] - Loss: 5.2365, Action: 1.6807, App: 1.8751
+  Batch [40/62] - Loss: 3.9749, Action: 1.2126, App: 1.5498
+  Batch [60/62] - Loss: 4.0728, Action: 1.3038, App: 1.4651
+Train Loss: 5.4773 (Action: 1.8388, App: 1.7998)
+Running validation...
+Validation - Action: Acc=0.3990, F1=0.1399 | App: Acc=0.5285, F1=0.2141
+No improvement (4/5)
+
+Epoch 12/20 (LR: 0.000025)
+/home/students/Desktop/projects/Video_Model/Refined4/trainer.py:30: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+  Batch [20/62] - Loss: 6.0209, Action: 2.0236, App: 1.9737
+  Batch [40/62] - Loss: 3.9641, Action: 1.2772, App: 1.4096
+  Batch [60/62] - Loss: 4.5323, Action: 1.4466, App: 1.6390
+Train Loss: 5.2951 (Action: 1.7832, App: 1.7287)
+Running validation...
+Validation - Action: Acc=0.3938, F1=0.1462 | App: Acc=0.4560, F1=0.1756
+No improvement (5/5)
+
+Early stopping triggered after 12 epochs
+
+=== Training Complete ===
+Best Combined F1: 0.1825
