@@ -1,0 +1,11 @@
+torch>=2.1.0
+torchvision
+transformers>=4.38.0
+accelerate
+pandas
+opencv-python
+ffmpeg-python
+pyyaml
+tqdm
+openai>=1.0.0   # or use groq, anthropic, etc.
+scikit-learn

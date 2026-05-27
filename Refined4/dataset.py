@@ -6,7 +6,7 @@ import torch
 from torch.utils.data import Dataset, DataLoader
 import warnings
 warnings.filterwarnings('ignore', category=UserWarning, module='torchvision.io')
-import torchvision.io as io
+from torchcodec.decoders import VideoDecoder
 import torchvision.transforms as transforms
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
@@ -27,8 +27,12 @@ class VideoDataset(Dataset):
 
     def __getitem__(self, idx):
         row = self.data_df.iloc[idx]
+        # video_path = os.path.join(self.root_dir, row['video_dir'], 'chunks', row['filename'])
+        # video, _, _ = io.read_video(video_path, pts_unit='sec')  # video: (T, H, W, C)
         video_path = os.path.join(self.root_dir, row['video_dir'], 'chunks', row['filename'])
-        video, _, _ = io.read_video(video_path, pts_unit='sec')  # video: (T, H, W, C)
+        decoder = VideoDecoder(video_path)
+        video = decoder[:]                    # (T, C, H, W), uint8
+        video = video.permute(0, 2, 3, 1)     # (T, H, W, C) to match the old layout
         
         # Sample exactly num_frames frames uniformly
         total_frames = video.shape[0]
